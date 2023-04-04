@@ -1,4 +1,9 @@
 export interface CountryInterface {
+	flags: {
+		png: string;
+		svg: string;
+		alt: string;
+	};
 	name: {
 		common: string;
 		official: string;
@@ -9,23 +14,13 @@ export interface CountryInterface {
 			};
 		};
 	};
-	independent: true;
-	status: string;
-	unMember: boolean;
-	currencies: {
-		BBD: {
-			name: string;
-			symbol: string;
-		};
-	};
 	capital: string[];
-	region: string; // note union
-	subregion: string;
+	region: Region; //union
 	population: number;
-	flag: string;
-	flags: {
-		png: string;
-		svg: string;
-		alt: string;
+	subregion: string;
+	languages: {
+		[key: string]: string;
 	};
 }
+
+export type Region = 'Africa' | 'Americas' | 'Asia' | 'Europe' | 'Oceania';

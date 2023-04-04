@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	modules: ['@pinia/nuxt'],
+	modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', 'nuxt-icon', '@nuxtjs/color-mode'],
 	pinia: {
 		autoImports: [
 			// automatically imports `defineStore`
@@ -8,5 +8,22 @@ export default defineNuxtConfig({
 			['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
 		],
 	},
-	ssr: false,
+	css: ['~/assets/css/main.css'],
+	postcss: {
+		plugins: {
+			tailwindcss: {},
+			autoprefixer: {},
+		},
+	},
+	colorMode: {
+		classSuffix: '',
+	},
+	tailwindcss: {
+		cssPath: '~/assets/css/main.css',
+		configPath: 'tailwind.config.ts',
+		exposeConfig: false,
+		injectPosition: 0,
+		viewer: true,
+	},
+	// ssr: false,
 });
