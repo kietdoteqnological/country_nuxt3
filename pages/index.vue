@@ -28,7 +28,9 @@
 				:url-image="country.flags.png"
 			/>
 		</div>
-		<div v-else><CountryCardSkeleton /></div>
+		<div v-else class="flex gap-16 flex-wrap justify-center">
+			<CountryCardSkeleton v-for="index in 20" :key="index" />
+		</div>
 
 		<vue-awesome-paginate
 			:total-items="displayCountryList.length"
