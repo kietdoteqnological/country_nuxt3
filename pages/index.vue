@@ -8,14 +8,10 @@
 					class="pl-9 h-11 w-full dark:bg-slate-700"
 					placeholder="Search for a country..."
 					v-model="search"
-					@input="store.getCountryFilter(search, filter)"
+					@input="getSearchResult"
 				/>
 			</div>
-			<select
-				class="border-2 dark:bg-slate-700 w-1/4"
-				v-model="filter"
-				@change="store.getCountryFilter(search, filter)"
-			>
+			<select class="border-2 dark:bg-slate-700 w-1/4" v-model="filter" @change="getSearchResult">
 				<option value="">All</option>
 				<option v-for="data in regionList" :key="data" :value="data">{{ data }}</option>
 			</select>
@@ -62,6 +58,10 @@
 	};
 
 	const currentPage = ref(1);
+	const getSearchResult = () => {
+		currentPage.value = 1;
+		store.getCountryFilter(search.value, filter.value);
+	};
 </script>
 
 <style>
